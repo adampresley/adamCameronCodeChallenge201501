@@ -5,6 +5,10 @@ import (
 	"log"
 )
 
+/*
+Represents a structure containing the values
+specified in the challenge.
+*/
 type ChallengeItem struct {
 	Alphabet string
 	Maori    string
@@ -16,6 +20,10 @@ type ChallengeItem struct {
 func main() {
 	log.Println("INFO - Starting...")
 
+	/*
+	 * Make a map fo ChallengeItem items that looks like
+	 * Mr. Cameron's example.
+	 */
 	var set = map[string]ChallengeItem{
 		"one": {
 			Alphabet: "a",
@@ -44,8 +52,15 @@ func main() {
 		},
 	}
 
+	/*
+	 * Here are the keys we want to pull, and the
+	 * order we want them in
+	 */
 	var keys = []string{"four", "two"}
 
+	/*
+	 * Call our function get our ordered ChallengeItem items
+	 */
 	result, err := getOrderedSubset(set, keys)
 	if err != nil {
 		log.Println("ERROR -", err)
@@ -54,6 +69,11 @@ func main() {
 	}
 }
 
+/*
+Takes a set of ChallengeItem structs and an array of keys. This will return
+an array of ChallengeItem structs for each key in the keys array. The resulting
+ChallengeItem array will be ordered by the key order in the keys array.
+*/
 func getOrderedSubset(set map[string]ChallengeItem, keys []string) ([]ChallengeItem, error) {
 	var result = make([]ChallengeItem, 0)
 
